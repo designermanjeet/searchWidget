@@ -9,6 +9,11 @@
           "img": "honda_2.jpg",
           "heading": "2009 Honda Forza",
           "price": "$8,000"
+        },
+        {
+          "img": "honda_3.jpeg",
+          "heading": "2005 Honda CTXEN",
+          "price": "$13,000"
         }
     ]
 }
