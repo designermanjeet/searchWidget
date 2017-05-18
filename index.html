@@ -37,9 +37,10 @@
     .result-list .price { top: 50%; }
     .result-list>img { min-height: 263px; }
     @media screen and (max-width:768px) {
-        .container { width: auto; }
-        .container > .search-widget { width: 100%; }
+        .container, .ajaxed-result { width: auto; }
+        .container > .search-widget, .result-list { width: 100%; }
         .container > .search-widget:nth-last-child(1) { float: none; margin-top: 25px; }
+        .result-list { margin-top: 15px; }
     }
     /***************End of Demo CSS**********/
 
@@ -129,7 +130,7 @@
     <script src="jquery-1.10.2.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#search').on('click', function(){
+            $('#search').one('click', function(){
                 $.getJSON( "search.json", function( data ) {
                   $.each( data.item, function( i, item ) {
                    var myHTML = "<div class='result-list'><span class='overlay' /><h3>"+item.heading+"</h3><span class='price'>"+item.price+"</span><img src="+item.img+" alt=''/><div>";
