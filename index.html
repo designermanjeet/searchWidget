@@ -14,32 +14,23 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <style>
-    /*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');*/
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
     body { margin:0; padding:0; font-family: 'Open Sans', sans-serif; }
     ul, li { margin:0; padding:0; list-style-type:none; }
     img { max-width:100%; }
     * { box-sizing:border-box; }
     .wrapper { margin: 0 auto; max-width: 1210px; padding: 0 15px 15px; }
     .container { min-height: 350px; }
-    .container > .search-widget { display: inline-block; width: 25%; vertical-align: top; }
-    .container > .search-widget:nth-last-child(1) { float: right; }
+    .container .search-widget { display: inline-block; width: 25%; vertical-align: top; }
+    .container .search-widget:nth-last-child(1) { float: right; }
     .container-small { max-width: 660px; }
     .container-medium { max-width: 970px; }
     .container-large { max-width: 1210px; }
     .hidden { display: none !important; }
-    .ajaxed-result { display: inline-block; vertical-align: top; width: 74%; }
-    .result-list { display: inline-block; width: 33.333%; box-shadow: rgba(0, 0, 0, 0.0745098) 0px 0px 12px 1px; border-width: 1px; border-style: solid; 
-        border-color: rgb(204, 204, 204); border-image: initial; position: relative; text-align: center;
-    }
-    .result-list .overlay { background: rgba(0, 0, 0, 0.6); position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; }
-    .result-list h3, .result-list .price { position: relative; z-index: 2; color: #fff; font-size: 21px; position: absolute; left: 0; width: 100%; }
-    .result-list h3 { top: 30%; }
-    .result-list .price { top: 50%; }
-    .result-list>img { min-height: 263px; }
+    
     @media screen and (max-width:768px) {
-        .container, .ajaxed-result { width: auto; }
-        .container > .search-widget, .result-list { width: 100%; }
-        .container > .search-widget:nth-last-child(1) { float: none; margin-top: 25px; }
+        .container .search-widget, .result-list { width: 100%; }
+        .container .search-widget:nth-last-child(1) { float: none; margin-top: 25px; }
         .result-list { margin-top: 15px; }
     }
     /***************End of Demo CSS**********/
@@ -54,91 +45,54 @@
     .search-widget input { border: 1px solid #ccc; color: #575757; margin-bottom: 15px; min-height: 40px; padding:8px; width: 100%; text-transform:uppercase; font-size:16px; font-weight:400; text-align:center; }
     .search-widget input[type="button"] { border:0; background:#ee2215; font-weight:600; margin:0; cursor:pointer; color:#fff; -webkit-transition: all 400ms ease-in-out 0s; -moz-transition: all 400ms ease-in-out 0s; -ms-transition: all 400ms ease-in-out 0s; -o-transition: all 400ms ease-in-out 0s; transition: all 400ms ease-in-out 0s; }
     .search-widget input[type="button"]:hover { opacity:0.7; }
+    .search-widget-wrap .ajaxed-result { display: inline-block; vertical-align: top; width: 74%; }
+    .search-widget-wrap .result-list { display: inline-block; width: 32%; box-shadow: rgba(0, 0, 0, 0.0745098) 0px 0px 12px 1px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); border-image: initial; position: relative; text-align: center; }
+    .search-widget-wrap .result-list .overlay { background: rgba(0, 0, 0, 0.6); position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; }
+    .search-widget-wrap .result-list h3, .search-widget-wrap .result-list .price { position: relative; z-index: 2; color: #fff; font-size: 21px; position: absolute; left: 0; width: 100%; }
+    .search-widget-wrap .result-list h3 { top: 30%; }
+    .search-widget-wrap .result-list .price { top: 50%; }
+    .search-widget-wrap .result-list>img { min-height: 263px; }
+    @media screen and (max-width:768px) { .search-widget-wrap .ajaxed-result { width: auto; } .search-widget-wrap .result-list { margin-top: 15px; width: 100%; }}
 </style>
 </head>
 <body>
     <div class="wrapper">
         <div class="container">
-            <!--h1>Small</h1-->
-            <!--search-widget-->
-            <div class="search-widget">
-              <h3>search It</h3>
-              <div class="input-group">
-                <input type="text" placeholder="Make"/>
-                <input type="text" placeholder="zip code"/>
-                <input type="button" value="Search" id="search"/>
-              </div>
-            </div>
-            <!--./search-widget-->
-            
-            <!--Search Listing to be appended-->
-            <div class="ajaxed-result">
-            </div>
-           <!--../Search Listing to be appended-->
+            <section class="search-widget-wrap">
+                <!--search-widget-->
+                <div class="search-widget">
+                  <h3>search It</h3>
+                  <div class="input-group">
+                    <input type="text" placeholder="Make"/>
+                    <input type="text" placeholder="zip code"/>
+                    <input type="button" value="Search" id="search"/>
+                  </div>
+                </div>
+                <!--./search-widget-->
+                <!--Search Listing to be appended-->
+                <div class="ajaxed-result">
+                    <div class="result-list">
+                        <span class="overlay"></span>
+                        <h3>2005 Honda CRF150</h3>
+                        <span class="price">$11,000</span>
+                        <img src="honda_1.jpg" alt="">
+                    </div>
+                    <div class="result-list">
+                        <span class="overlay"></span>
+                        <h3>2009 Honda Forza</h3>
+                        <span class="price">$8,000</span>
+                        <img src="honda_2.jpg" alt="">
+                    </div>
+                    <div class="result-list">
+                        <span class="overlay"></span>
+                        <h3>2005 Honda CTXEN</h3>
+                        <span class="price">$13,000</span>
+                        <img src="honda_3.jpeg" alt="">
+                    </div>
+                </div>
+               <!--../Search Listing to be appended-->
+           </section>
         </div>
-        
-        <!--Medium-->
-        <div class="container container-medium hidden">
-            <h1>Medium</h1>
-            <!--search-widget-->
-            <div class="search-widget">
-              <h3>search It</h3>
-              <div class="input-group">
-                <input type="text" placeholder="Make"/>
-                <input type="text" placeholder="zip code"/>
-                <input type="button" value="Search"/>
-              </div>
-            </div>
-            <!--./search-widget-->
-            <!--search-widget-->
-            <div class="search-widget">
-              <h3>search It</h3>
-              <div class="input-group">
-                <input type="text" placeholder="zip code"/>
-                <input type="button" value="Search"/>
-              </div>
-            </div>
-            <!--./search-widget-->
-        </div>
-        <!--./Medium-->
-        <!--Large-->
-        <div class="container container-large hidden">
-            <h1>Large</h1>
-            <!--search-widget-->
-            <div class="search-widget">
-              <h3>search It</h3>
-              <div class="input-group">
-                <input type="text" placeholder="Make"/>
-                <input type="text" placeholder="zip code"/>
-                <input type="button" value="Search"/>
-              </div>
-            </div>
-            <!--./search-widget-->
-            <!--search-widget-->
-            <div class="search-widget">
-              <h3>search It</h3>
-              <div class="input-group">
-                <input type="text" placeholder="zip code"/>
-                <input type="button" value="Search"/>
-              </div>
-            </div>
-            <!--./search-widget-->
-        </div>
-        <!--./Large-->
     </div>
-    
-    <script src="jquery-1.10.2.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#search').one('click', function(){
-                $.getJSON( "search.json", function( data ) {
-                  $.each( data.item, function( i, item ) {
-                   var myHTML = "<div class='result-list'><span class='overlay' /><h3>"+item.heading+"</h3><span class='price'>"+item.price+"</span><img src="+item.img+" alt=''/><div>";
-                    $('.ajaxed-result').append(myHTML);
-                  });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
